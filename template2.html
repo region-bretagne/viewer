@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="lib/ol3/3.6.0/ol.css" />
+    <!--<link rel="stylesheet" href="lib/bootstrap/3.3.5/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="http://guidestyles.bretagne.bzh/thematiques/formation.css">
+    <link rel="stylesheet" href="http://guidestyles.bretagne.bzh/styles/crbicon.css">
+    <link rel="stylesheet" href="lib/slidepanel/jquery.navgoco.css" />
+  
+    <title>bootstrap viewer</title>
+    <style type="text/css">
+      body { overflow: hidden; }
+      .navbar-offset { margin-top: 50px; }
+      #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
+      #map .ol-zoom { 
+        font-size: 1.2em;
+         top: 2em;
+         left:auto;
+         right: .5em;
+         text-align: right;
+      }
+      .zoom-top-opened-sidebar { margin-top: 5px; }
+      .zoom-top-collapsed { margin-top: 45px; }
+      .mini-submenu{
+        display:none;  
+        background-color: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        padding: 9px;  
+        /*position: relative;*/
+        width: 42px;
+        text-align: center;
+      }
+      .mini-submenu-left {
+        position: absolute;
+        top: 80px;
+        left: .5em;
+        z-index: 40;
+      }
+      #map { z-index: 35; }
+      .sidebar { z-index: 45; }
+      .main-row { position: relative; top: 0; }
+      .mini-submenu:hover{
+        cursor: pointer;
+      }
+      .slide-submenu{        
+        display: inline-block;
+        padding: 0 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .viewer-left-panel {
+        top:2em;
+      }
+      
+       .ol-control button {
+        background-color:#000;
+       }
+    </style>
+    <script type="text/javascript" src="lib/ol3/3.6.0/ol.js"></script>
+    <script type="text/javascript" src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/slidepanel/jquery.navgoco.js"></script>
+    <script type="text/javascript">    
+      
+      $(function(){      
+       
+        var map = new ol.Map({
+          target: "map",
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          view: new ol.View({
+            center: [0, 0],
+            zoom: 2
+          })
+        });        
+      });
+      
+      $(document).ready(function(){												
+       
+           //Navigation Menu Slider
+            $('#nav-expander').on('click',function(e){
+                e.preventDefault();
+                $('body').toggleClass('nav-expanded');
+            });
+            $('#nav-close').on('click',function(e){
+                e.preventDefault();
+                $('body').removeClass('nav-expanded');
+            });
+            
+            
+            // Initialize navgoco with default options
+            $(".main-menu").navgoco({
+                caret: '<span class="caret"></span>',
+                accordion: false,
+                openClass: 'open',
+                save: true,
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 300,
+                    easing: 'swing'
+                }
+            });
+        	
+      });
+      
+    </script>
+  </head>
+  <body>
+     <nav>
+        <ul class="list-unstyled main-menu">
+          
+          <!--Include your navigation here-->
+          <li class="text-right"><a href="#" id="nav-close">X</a></li>
+          <li><a href="#">Menu One <span class="icon-play-circle-o"></span></a></li>
+          <li><a href="#">Menu Two <span class="icon-play-circle-o"></span></a></li>
+          <li><a href="#">Menu Three <span class="icon-play-circle-o"></span></a></li>
+          <li><a href="#">Dropdown</a>
+            <ul class="list-unstyled">
+                <li class="sub-nav"><a href="#">Sub Menu One <span class="icon-globe"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Two <span class="icon-mobile"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Three <span class="icon-mobile"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Four <span class="icon-mobile"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Five <span class="icon-bar"></span></a></li>
+            </ul>
+          </li>
+          <li><a href="#">Menu Four <span class="icon-web"></span></a></li>
+          <li><a href="#">Menu Five <span class="icon-web"></span></a></li>
+        </ul>
+      </nav>
+       <div class="navbar navbar-inverse navbar-fixed-top">      
+        
+        <!--Include your brand here-->
+        <a class="navbar-brand rb" href="#">Kartenn</a>
+        <div class="navbar-header">
+          <a id="nav-expander" class="nav-expander fixed">
+            MENU &nbsp;<i class="icon-bar"></i>
+          </a>          
+        </div>
+    </div>
+
+    <div class="container">     
+      <div id="map"/>
+    </div>      
+  </body>
+</html>
