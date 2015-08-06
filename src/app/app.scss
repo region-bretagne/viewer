@@ -1,0 +1,16 @@
+// scss
+
+body {
+	overflow: hidden;
+}
+
+$navbarheight : 60px;
+
+#map {
+    height: calc(100% - #{$navbarheight});
+
+}
+.angular-openlayers-map {
+    height: 100%;
+    width: 100%;
+}
