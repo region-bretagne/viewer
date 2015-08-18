@@ -21,12 +21,6 @@
         "build/ol.css",
         "build/ol.js"
       ]
-    },
-    "navgoco": {
-      "main": [
-        "src/jquery.navgoco.css",
-        "src/jquery.navgoco.js"
-      ]
     }
   }
 }

@@ -46,27 +46,12 @@
 
       </nav>
 
-      <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="left">
-        <md-toolbar class="md-tall md-hue-2">
-          <span flex></span>
-          <div layout="column" class="md-toolbar-tools-bottom inset">
-            <user-avatar></user-avatar>
-            <span></span>
-            <h2>Sidebar Kartenn</h2>
-          </div>
-        </md-toolbar>
-        <md-list>
-          <md-item ng-repeat="item in menu">
-            <a>
-              <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                <div class="inset">
-                  <i class="icon-{{item.icon}}"></i>
-                </div>
-                <div class="inset">{{item.title}}
-                </div>
-              </md-item-content>
-            </a>
-          </md-item>
+      <md-sidenav class="md-sidenav-right" md-component-id="left">
+        <md-subheader class="md-no-sticky">Marker select</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="item in menu">
+          <h3> {{ item.title }} </h3>
+        </md-list-item>
+        <md-divider></md-divider>
           <md-divider></md-divider>
           <md-subheader>Fonds de carte</md-subheader>
           <md-item ng-repeat="layer in layers">

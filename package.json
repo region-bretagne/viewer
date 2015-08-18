@@ -1,6 +1,6 @@
 {
-  "name": "kartennApp",
-  "version": "0.0.0",
+  "name": "kartApp",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.0",
