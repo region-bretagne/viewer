@@ -67,7 +67,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
         },
         {
             name: 'MapBox Terrain',
-            active: true,
+            active: false,
             source: {
                 type: 'TileJSON',
                 url: 'https://api.tiles.mapbox.com/v3/examples.map-i86nkdio.jsonp'
@@ -75,7 +75,8 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
         },
         {
             name: 'Mapbox Geography Class',
-            active: false,
+            active: true,
+            visible: true,
             source: {
                 type: 'TileJSON',
                 url: 'http://api.tiles.mapbox.com/v3/mapbox.geography-class.jsonp'
