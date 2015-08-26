@@ -1,6 +1,6 @@
 # KartApp
 * angular-material app : [view](https://material.angularjs.org/latest/#/)
-* openlayer 3 directives [view](http://tombatossals.github.io/angular-openlayers-directive/#/)
+* openlayer 3 [view](http://openlayers.org/)
 * styleguide crb [view](http://guidestyles.bretagne.bzh/)
 
 ## Requirements
