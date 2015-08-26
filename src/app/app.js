@@ -2,7 +2,7 @@
 
 //app
 
-var app = angular.module('kartApp', ['ngMaterial', 'openlayers-directive']);
+var app = angular.module('kartApp', ['ngMaterial']);
 
 app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
   
@@ -28,66 +28,72 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
   		'link' : 'url 3'
   	}
   ];
-
-  angular.extend($scope, {
-      center: {
-          lat: 48.113,
-          lon: -1.670,
-          zoom: 6
-      },
-      controls: [
-          { name: 'zoom', active: true },
-          { name: 'fullscreen', active: true },
-          { name: 'attribution', active: true }
-      ],
+// CARTO
+  var layerExtend = function (l, params) {
+    return angular.extend(l, params);
+  };   
+   
+  angular.extend($scope, {      
       layers: [
-        {
-            name: 'OpenStreetMap',
-            active: false,
-            source: {
-                type: 'OSM'
+         layerExtend( 
+            new ol.layer.Tile({                               
+                source: new ol.source.OSM(),
+                visible: false
+            }),{
+                title:'OpenStreetMap'
             }
-        },
-        {
-            name: 'OpenCycleMap',
-            active: false,
-            source: {
-                type: 'OSM',
-                url: 'http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-                attribution: 'All maps &copy; <a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
-            }
-        },
-        {
-            name: 'MapBox Night',
-            active: false,
-            source: {
-                type: 'TileJSON',
-                url: 'https://api.tiles.mapbox.com/v3/examples.map-0l53fhk2.jsonp'
-            }
-        },
-        {
-            name: 'MapBox Terrain',
-            active: false,
-            source: {
-                type: 'TileJSON',
-                url: 'https://api.tiles.mapbox.com/v3/examples.map-i86nkdio.jsonp'
-            }
-        },
-        {
-            name: 'Mapbox Geography Class',
-            active: true,
-            visible: true,
-            source: {
-                type: 'TileJSON',
-                url: 'http://api.tiles.mapbox.com/v3/mapbox.geography-class.jsonp'
-            }
-        }
-    ],
-    changeLayer: function(layer) {
+         ),            
+        layerExtend( 
+            new ol.layer.Tile({                               
+                source: new ol.source.OSM({
+                    url: 'http://{a-c}.tiles.mapbox.com/v3/mapbox.geography-class/{z}/{x}/{y}.png'                    
+                }),
+                visible: true
+            }),{
+                title:'Mapbox Geography Class'
+                }
+        ),
+        layerExtend( 
+            new ol.layer.Tile({                               
+                source: new ol.source.OSM({
+                    url: 'http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+                    attribution: 'All maps &copy; <a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
+                }),
+                visible: false
+            }),{
+                title:'OpenCycleMap'
+                }
+        ),
+        layerExtend( 
+            new ol.layer.Tile({                               
+                source: new ol.source.OSM({
+                    url: 'http://{a-b}.tiles.mapbox.com/v3/examples.map-0l53fhk2/{z}/{x}/{y}.png',
+                    attribution : "<a href=\"https://www.mapbox.com/about/maps/\" target=\"_blank\">&copy; Mapbox</a> <a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap</a> <a class=\"mapbox-improve-map\" href=\"https://www.mapbox.com/map-feedback/\" target=\"_blank\">Improve this map</a>"
+                }),
+                visible: false
+            }),{
+                title:'MapBox Night'
+                }
+        )
+      ],
+      changeLayer: function(layer) {
         $scope.layers.map(function(l) {
-            l.active = (l === layer);
+            l.setVisible (l === layer);
         });
-    }
+      }
   });
-
+  
+  $scope.map = new ol.Map({
+      layers: $scope.layers,
+      controls: ol.control.defaults().extend([
+        new ol.control.FullScreen(),
+        new ol.control.Attribution()
+      ]),
+      target: 'map',
+      view: new ol.View({
+        center: [-255230.17323666788, 6053408.222195528],
+        zoom: 4
+      })
+  });
+  // FIN CARTO
 }]);
