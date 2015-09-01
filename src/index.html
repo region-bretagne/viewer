@@ -46,26 +46,53 @@
 
       </nav>
 
-      <md-sidenav class="md-sidenav-right" md-component-id="left">
-        <md-subheader class="md-no-sticky">Marker select</md-subheader>
+      <md-sidenav class="md-sidenav-right" md-component-id="left">             
+         <md-content layout-padding="" layout="column">
+             <form ng-submit="$event.preventDefault()" ng-controller="banController as ctrl" >     
+                <md-autocomplete flex
+                    md-selected-item="ctrl.selectedItem"
+                    md-search-text="ctrl.searchText"
+                    md-items="item in ctrl.querySearch(ctrl.searchText)"
+                    md-selected-item-change="ctrl.selectedItemChange(item)"
+                    md-item-text="item.properties.label"
+                    md-min-length="3"
+                    placeholder="Rechercher une adresse"            
+                    md-menu-class="ban-template">          
+                        <md-item-template>
+                              <span class="item-title">
+                                <md-icon md-svg-icon="assets/images/octicon-repo.svg"></md-icon>
+                                <span> {{item.properties.label}} </span>
+                              </span>
+                              <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{item.properties.context}}</strong>
+                                </span>
+                                <span class="item-metastat">
+                                  <i>{{item.properties.type}}</i>
+                                </span>
+                              </span>
+                      </md-item-template>
+                </md-autocomplete>
+            </form>
+    </md-content>
+     <md-divider></md-divider>   
         <md-list-item class="md-3-line" ng-repeat="item in menu">
           <h3> {{ item.title }} </h3>
         </md-list-item>
         <md-divider></md-divider>
-          <md-divider></md-divider>
-          <md-subheader>Fonds de carte</md-subheader>
-          <md-item ng-repeat="layer in layers">
-            <a ng-click="changeLayer(layer)">
-              <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                <div class="inset">
-                  <ng-md-icon icon="{{layer.screenshot}}"></ng-md-icon>
-                </div>
-                <div class="inset">{{layer.title}}
-                </div>
-              </md-item-content>
-            </a>
-          </md-item> 
-        </md-list>
+          <md-divider></md-divider>          
+          <md-list ng-controller="mapCtrl">
+              <md-subheader class="md-no-sticky">Backgroundlayers</md-subheader>
+              <md-list-item md-ink-ripple ng-repeat="layer in backgroundlayers" ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">           
+                    <div class="inset">
+                      <md-icon md-svg-icon="{{layer.screenshot}}"></md-icon>
+                    </div>
+                    <div class="inset" ng-class="{'active':layer.getVisible()}">{{layer.title}}
+                    </div>                
+                       
+              </md-list-item>
+          </md-list>
+        
       </md-sidenav>
 
       <div id="map">        
@@ -97,6 +124,10 @@
 
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- inject:js -->          
+    <script src="/module/adresseService.js"></script>          
+    <script src="/module/mapService.js"></script>          
     <!-- endinject -->
     <!-- endbuild -->
   </body>
