@@ -1,7 +1,4 @@
-'use strict';
-var mapService = angular.module('km_map', []);
-
-mapService.factory('km_mapMapFactory', function(){
+app.factory('km_mapMapFactory', function(){
 
     var _layerExtend = function (l, params) {
         return angular.extend(l, params);
@@ -108,3 +105,4 @@ mapService.factory('km_mapMapFactory', function(){
         $scope.changeLayer = km_mapMapFactory.changeLayer;
     }
 ]);
+
