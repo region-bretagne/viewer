@@ -10,7 +10,7 @@
 
 ## Installation
 
-1. Clone the git repo - `https://github.com/region-bretagne/viewer/tree/kartapp`
+1. Clone the git repo - `https://github.com/region-bretagne/viewer'
 2. Run `npm install`
 3. Run `bower install`
 4. Run `gulp serve`
