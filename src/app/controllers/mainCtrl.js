@@ -1,3 +1,5 @@
+'use strict';
+
 app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
   
   $scope.toggleSidenav = function(menuID) {

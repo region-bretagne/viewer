@@ -1,3 +1,5 @@
+'use strict';
+
 app.controller("banController", function($http, km_mapMapFactory){
           
   this.querySearch = function(val){

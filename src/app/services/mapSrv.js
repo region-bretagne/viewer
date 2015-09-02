@@ -1,3 +1,5 @@
+'use strict';
+
 app.factory('km_mapMapFactory', function(){
 
     var _layerExtend = function (l, params) {
