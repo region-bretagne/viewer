@@ -10,22 +10,4 @@ $navbarheight : 60px;
     height: calc(100% - #{$navbarheight});
 
 }
-.angular-openlayers-map {
-    height: 100%;
-    width: 100%;
-}
 
-.ban-template li {
-	border-bottom: 1px solid #ccc;
-  	height: auto;
-  	padding-top: 8px;
-  	padding-bottom: 8px;
-  	white-space: normal; }
-.ban-template li:last-child {
-  	border-bottom-width: 0; }
-.ban-template .item-title, .ban-template .item-metadata {
-  	display: block;
-  	line-height: 2; }
-.ban-template .item-title md-icon {
-  	height: 18px;
-  	width: 18px; }
