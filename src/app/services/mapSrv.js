@@ -37,7 +37,7 @@ app.factory('km_mapMapFactory', function(){
                         html: 'All maps &copy; ' +
                             '<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
                       }),
-                      ol.source.OSM.DATA_ATTRIBUTION
+                      ol.source.OSM.ATTRIBUTION
                     ]                    
                 }),
                 visible: false
@@ -54,7 +54,7 @@ app.factory('km_mapMapFactory', function(){
                       new ol.Attribution({
                         html: '<a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap</a> <a class=\"mapbox-improve-map\" href=\"https://www.mapbox.com/map-feedback/\" target=\"_blank\">Improve this map</a>'
                       }),
-                      ol.source.OSM.DATA_ATTRIBUTION
+                      ol.source.OSM.ATTRIBUTION
                     ]  
                 }),
                 visible: false
