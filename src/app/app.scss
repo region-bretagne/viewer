@@ -1,5 +1,3 @@
-
-
 // scss
 
 body {
@@ -10,7 +8,6 @@ $navbarheight : 60px;
 
 #map {
     height: calc(100% - #{$navbarheight});
+
 }
 
-
-@import "temp";
