@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../bower_components/openlayers3/build/ol.css" />
     <!-- endbower -->
 
+
     <!-- endbuild -->
 
     <!-- build:css({.tmp,src}) styles/app.css -->
@@ -116,18 +117,25 @@
     <script src="../bower_components/angular-material/angular-material.js"></script>
     <script src="../bower_components/openlayers3/build/ol.js"></script>
     <!-- endbower -->
+    
 
     <!-- endbuild -->
 
     <!-- build:js({.tmp,src}) scripts/app.js -->
     <script src="app/app.js"></script>
 
+
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->
     <!-- endinject -->
-    <!-- inject:js -->          
-    <script src="/module/adresseService.js"></script>          
-    <script src="/module/mapService.js"></script>          
+    <!-- inject:js -->
+
+    <script src="app/controllers/mainCtrl.js"></script>
+
+    <script src="app/controllers/searchCtrl.js"></script>
+
+    <script src="app/services/mapSrv.js"></script>
+
     <!-- endinject -->
     <!-- endbuild -->
   </body>
