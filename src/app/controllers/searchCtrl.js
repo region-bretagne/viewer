@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("banController", function($http, km_mapMapFactory){
+app.controller("SearchCtrl", function($http, km_mapMapFactory){
           
   this.querySearch = function(val){
     return $http.get('http://api-adresse.data.gouv.fr/search/?autocomplete=0&limit=5&q='+val)
@@ -11,6 +11,7 @@ app.controller("banController", function($http, km_mapMapFactory){
 
   this.selectedItemChange = function(item) {
       console.log('Item changed to ' + JSON.stringify(item));
+      
       if (item && item .geometry && item.properties) {
           var center = ol.proj.transform(item.geometry.coordinates, 'EPSG:4326', 'EPSG:3857');
           var zoom = 0;

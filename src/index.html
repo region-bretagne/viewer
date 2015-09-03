@@ -33,23 +33,42 @@
 
       <nav class="navbar navbar-default">
 
-        <div class="container-fluid">
+        <div class="container-fluid" layout="row">
           
-          <a href="#" class="navbar-brand rb">Kartenn</a>
-          <p class="navbar-text">Application cartographique de la Région Bretagne</p>
-          
-          <button ng-click="toggleSidenav('left')" class="navbar-btn btn btn-primary navbar-right">
-            <i class="icon-bars"></i>
-            <span class="visually-hidden">Menu</span>
-          </button>
+          <header class="header" flex>
+            <a href="#" class="navbar-brand rb">Kartenn</a>
+            <p class="navbar-text"><small>Application cartographique de la Région Bretagne</small></p>
+          </header>
+            
+          <form flex ng-submit="$event.preventDefault()" ng-controller="SearchCtrl as crtl" class="navbar-form navbar-left">
+            <md-autocomplete flex
+                    md-selected-item="ctrl.selectedItem"
+                    md-search-text="ctrl.searchText"
+                    md-items="item in ctrl.querySearch(ctrl.searchText)"
+                    md-selected-item-change="ctrl.selectedItemChange(item)"
+                    md-item-text="item.properties.label"
+                    md-min-length="3"
+                    placeholder="Rechercher une adresse"            
+                    md-menu-class="ban-template">          
+                        <md-item-template>
+                              <span class="item-title">
+                                <md-icon md-svg-icon="assets/images/octicon-repo.svg"></md-icon>
+                                <span> {{item.properties.label}} </span>
+                              </span>
+                              <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{item.properties.context}}</strong>
+                                </span>
+                                <span class="item-metastat">
+                                  <i>{{item.properties.type}}</i>
+                                </span>
+                              </span>
+                      </md-item-template>
+                </md-autocomplete>
 
-        </div>
+          </form>
 
-      </nav>
-
-      <md-sidenav class="md-sidenav-right" md-component-id="left">             
-         <md-content layout-padding="" layout="column">
-             <form ng-submit="$event.preventDefault()" ng-controller="banController as ctrl" >     
+          <!-- <form ng-submit="$event.preventDefault()" ng-controller="banController as ctrl" >     
                 <md-autocomplete flex
                     md-selected-item="ctrl.selectedItem"
                     md-search-text="ctrl.searchText"
@@ -74,9 +93,28 @@
                               </span>
                       </md-item-template>
                 </md-autocomplete>
-            </form>
-    </md-content>
-     <md-divider></md-divider>   
+            </form> -->
+          
+          <div flex>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a ng-click="toggleSidenav('left')">calques</a>
+              </li>
+              <li>
+                <a ng-click="toggleSidenav('left')">fond de cartes</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+      <md-sidenav class="md-sidenav-right" md-component-id="left">             
+         
+        <md-divider></md-divider>   
         <md-list-item class="md-3-line" ng-repeat="item in menu">
           <h3> {{ item.title }} </h3>
         </md-list-item>
