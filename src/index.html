@@ -39,21 +39,23 @@
             <a href="#" class="navbar-brand rb">Kartenn</a>
             <p class="navbar-text"><small>Application cartographique de la Région Bretagne</small></p>
           </header>
+
+          <div class="search" ng-controller="SearchCtrl as ctrl">
             
-          <form flex ng-submit="$event.preventDefault()" ng-controller="SearchCtrl as crtl" class="navbar-form navbar-left">
-            <md-autocomplete flex
-                    md-selected-item="ctrl.selectedItem"
+            <form ng-submit="$event.preventDefault()" class="navbar-form">     
+                <md-autocomplete
                     md-search-text="ctrl.searchText"
                     md-items="item in ctrl.querySearch(ctrl.searchText)"
                     md-selected-item-change="ctrl.selectedItemChange(item)"
                     md-item-text="item.properties.label"
-                    md-min-length="3"
-                    placeholder="Rechercher une adresse"            
-                    md-menu-class="ban-template">          
+                    placeholder="rechercher une adresse"            
+                    >          
                         <md-item-template>
                               <span class="item-title">
-                                <md-icon md-svg-icon="assets/images/octicon-repo.svg"></md-icon>
-                                <span> {{item.properties.label}} </span>
+                                <span >
+                                  <i class="icon-search"></i>
+                                </span>
+                                   {{ item.properties.label}} 
                               </span>
                               <span class="item-metadata">
                                 <span class="item-metastat">
@@ -65,38 +67,11 @@
                               </span>
                       </md-item-template>
                 </md-autocomplete>
+            </form>
 
-          </form>
+          </div>
 
-          <!-- <form ng-submit="$event.preventDefault()" ng-controller="banController as ctrl" >     
-                <md-autocomplete flex
-                    md-selected-item="ctrl.selectedItem"
-                    md-search-text="ctrl.searchText"
-                    md-items="item in ctrl.querySearch(ctrl.searchText)"
-                    md-selected-item-change="ctrl.selectedItemChange(item)"
-                    md-item-text="item.properties.label"
-                    md-min-length="3"
-                    placeholder="Rechercher une adresse"            
-                    md-menu-class="ban-template">          
-                        <md-item-template>
-                              <span class="item-title">
-                                <md-icon md-svg-icon="assets/images/octicon-repo.svg"></md-icon>
-                                <span> {{item.properties.label}} </span>
-                              </span>
-                              <span class="item-metadata">
-                                <span class="item-metastat">
-                                  <strong>{{item.properties.context}}</strong>
-                                </span>
-                                <span class="item-metastat">
-                                  <i>{{item.properties.type}}</i>
-                                </span>
-                              </span>
-                      </md-item-template>
-                </md-autocomplete>
-            </form> -->
-          
           <div flex>
-
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <a ng-click="toggleSidenav('left')">calques</a>
@@ -114,6 +89,7 @@
 
       <md-sidenav class="md-sidenav-right" md-component-id="left">             
          
+            
         <md-divider></md-divider>   
         <md-list-item class="md-3-line" ng-repeat="item in menu">
           <h3> {{ item.title }} </h3>

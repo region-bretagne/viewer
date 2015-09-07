@@ -12,5 +12,9 @@ $navbarheight : 60px;
     height: calc(100% - #{$navbarheight});
 }
 
+.navbar-nav a:hover {
+	cursor: pointer;
+}
+
 
 @import "temp";

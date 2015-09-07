@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller("SearchCtrl", function($http, km_mapMapFactory){
+app.controller("SearchCtrl", function($http, km_mapMapFactory) {
           
-  this.querySearch = function(val){
+  this.querySearch = function(val) {
     return $http.get('http://api-adresse.data.gouv.fr/search/?autocomplete=0&limit=5&q='+val)
     .then(function(result){
       return result.data.features;
