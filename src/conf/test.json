@@ -1,0 +1,21 @@
+{
+    "name": "Application cartographique de test",
+    "version": 0.3,
+    "map": {
+        "center": [
+            -255230.17323666788,
+            6053408.222195528
+        ],
+        "zoom": 11,
+        "backgroundlayers": [            
+            {
+                "title": "MapBox Night",
+                "screenshot": "assets/images/octicon-repo.svg",
+                "visible": true,
+                "attribution": "<a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap</a> <a class=\"mapbox-improve-map\" href=\"https://www.mapbox.com/map-feedback/\" target=\"_blank\">Improve this map</a>",
+                "type": "OSM",
+                "url": "http://{a-b}.tiles.mapbox.com/v3/examples.map-0l53fhk2/{z}/{x}/{y}.png"
+            }
+        ]
+    }
+}
