@@ -11,10 +11,10 @@ app.config(
 );
 
 app.run(function ($http, $rootScope, $location, $mdDialog) {
-    var conf = 'config.json';
+    var conf = 'conf/default.json';
     var params = $location.search();
     if (params.app) {
-        conf = params.app + '.json';
+        conf = 'conf/' + params.app + '.json';
     }
     $http.get(conf)
         .success(function (data) {
