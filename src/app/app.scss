@@ -8,6 +8,13 @@ body {
 
 $navbarheight : 60px;
 
+.navbar > div {
+	display: flex;
+	> * {
+		flex: 1;
+	}
+}
+
 #map {
     height: calc(100% - #{$navbarheight});
 }

@@ -1,24 +1,42 @@
 'use strict';
 
-app.controller('AppCtrl', ['$location', '$rootScope', '$scope', '$mdSidenav', 'km_mapMapFactory', function ($location, $rootScope, $scope, $mdSidenav, km_mapMapFactory) {
+app.controller('MainCtrl', ['$http', '$location', '$rootScope', '$scope', 'LayerSlct', function($http, $location, $rootScope, $scope, LayerSlct) {
+
+    var conf = 'conf/default.json';
+    var params = $location.search();
+    
+    if (params.app) {
+        conf = 'conf/' + params.app + '.json';
+    }
+    
+    $http.get(conf)
+        .success(function(data) {
+            $scope.config = data;
+            $scope.$broadcast('config-loaded');
+        })
+        .error(function(data, status) {
+            // $mdDialog.show(
+            //     $mdDialog.alert()
+            //         .parent(angular.element(document.body))
+            //         .title('Erreur')
+            //         .content(status + ' : ' + data)
+            //         .ariaLabel('Alert Dialog')
+            //         .ok('Fermer')
+            // );
+    })
 
     //Fire when config.json is loaded
     $scope.$on('config-loaded', function () {
-        $scope.name = $rootScope.config.name;
+        $scope.name = $scope.config.name;
         //get optional url parameters
         var params = $location.search();
         if (params.x && params.y && params.z) {
             //if parameters x,y,z are defined then zoom on this place
-            $rootScope.config.map.center = km_mapMapFactory.fromLonlat([parseFloat(params.x), parseFloat(params.y)]);
-            $rootScope.config.map.zoom = [parseInt(params.z)];
+            $scope.config.map.center = LayerSlct.fromLonlat([parseFloat(params.x), parseFloat(params.y)]);
+            $scope.config.map.zoom = [parseInt(params.z)];
         }
-        $scope.map = km_mapMapFactory.initMap($rootScope.config.map);
+        $scope.map = LayerSlct.initMap($scope.config.map);
     });
-
-    $scope.toggleSidenav = function (menuID) {
-        $mdSidenav(menuID).toggle();
-        console.log('check');
-    };
 
     $scope.menu = [{
         title: 'menu 1',
