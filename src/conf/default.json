@@ -1,0 +1,37 @@
+{
+    "name": "Application cartographique de la Région Bretagne",
+    "version": 0.3,
+    "map": {
+        "center": [
+            -255230.17323666788,
+            6053408.222195528
+        ],
+        "zoom": 8,
+        "backgroundlayers": [
+            {
+                "title": "OpenCycleMap",
+                "screenshot": "assets/images/octicon-repo.svg",
+                "visible": true,
+                "attribution": "All maps &copy; <a href=\"http://www.opencyclemap.org/\">OpenCycleMap</a>",
+                "type": "OSM",
+                "url": "http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+            },
+            {
+                "title": "Mapbox Geography Class",
+                "screenshot": "assets/images/octicon-repo.svg",
+                "visible": false,
+                "attribution": "Mapbox",
+                "type": "OSM",
+                "url": "http://{a-c}.tiles.mapbox.com/v3/mapbox.geography-class/{z}/{x}/{y}.png"
+            },
+            {
+                "title": "MapBox Night",
+                "screenshot": "assets/images/octicon-repo.svg",
+                "visible": false,
+                "attribution": "<a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap</a> <a class=\"mapbox-improve-map\" href=\"https://www.mapbox.com/map-feedback/\" target=\"_blank\">Improve this map</a>",
+                "type": "OSM",
+                "url": "http://{a-b}.tiles.mapbox.com/v3/examples.map-0l53fhk2/{z}/{x}/{y}.png"
+            }
+        ]
+    }
+}

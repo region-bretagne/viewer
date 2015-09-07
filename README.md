@@ -14,3 +14,11 @@
 2. Run `npm install`
 3. Run `bower install`
 4. Run `gulp serve`
+
+## configuration
+Edit conf/default.json
+
+## customization
+1. Copy conf/default.json eg. conf/test.json
+2. Edit this new json file
+3. Run the application like this : http://localhost/kartapp/?app=test

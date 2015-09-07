@@ -5,6 +5,7 @@
     <title>Kartenn</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <base href="/" target="_blank">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp,src}) styles/vendor.css -->
@@ -37,13 +38,14 @@
           
           <header class="header" flex>
             <a href="#" class="navbar-brand rb">Kartenn</a>
-            <p class="navbar-text"><small>Application cartographique de la Région Bretagne</small></p>
+            <p class="navbar-text"><small>{{ name }}</small></p>
           </header>
 
           <div class="search" ng-controller="SearchCtrl as ctrl">
             
             <form ng-submit="$event.preventDefault()" class="navbar-form">     
                 <md-autocomplete
+                    md-selected-item="ctrl.selectedItem"
                     md-search-text="ctrl.searchText"
                     md-items="item in ctrl.querySearch(ctrl.searchText)"
                     md-selected-item-change="ctrl.selectedItemChange(item)"
