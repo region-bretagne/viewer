@@ -1,0 +1,13 @@
+<div class="pane-wrapper">   
+
+    <ul class="list-unstyled map-list">
+      <li ng-repeat="layer in backgroundlayers" class="map-item">           
+        <a class=" thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
+          <img src="{{layer.screenshot}}" alt="" class="map-screenshot">
+        </a>
+        <p ng-class="{'active':layer.getVisible()}">{{ layer.title }}</p>
+
+      </li>
+    </ul>
+
+</div><!-- /.pane-wrappe -->
