@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', ['$http', '$location', '$rootScope', '$scope', 'LayerSlct', function($http, $location, $rootScope, $scope, LayerSlct) {
+app.controller('MainCtrl', ['$http', '$location', '$scope', 'LayerSlct', 'panels', function($http, $location, $scope, LayerSlct, panels) {
 
     var conf = 'conf/default.json';
     var params = $location.search();
@@ -38,18 +38,13 @@ app.controller('MainCtrl', ['$http', '$location', '$rootScope', '$scope', 'Layer
         $scope.map = LayerSlct.initMap($scope.config.map);
     });
 
-    $scope.menu = [{
-        title: 'menu 1',
-        icon: 'paper-plane',
-        link: 'url 1'
-    }, {
-        title: 'menu 2',
-        icon: 'folder',
-        link: 'url 2'
-    }, {
-        title: 'menu 3',
-        icon: 'coffee',
-        link: 'url 3'
-    }];
 
-}]);
+    // fonctions d'ouverture de panneaux
+    $scope.OpenLayerMenu = function () {
+       $scope.$broadcast('OpenLayerMenu', {message : $scope.message});
+    };
+    $scope.OpenMapMenu = function () {
+       $scope.$broadcast('OpenMapMenu', {message : $scope.message});
+    };
+
+}])

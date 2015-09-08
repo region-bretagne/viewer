@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("SearchCtrl", ['$http', 'LayerSlct', function($http, LayerSlct) {
+app.controller("searchCtrl", ['$http', 'LayerSlct', function($http, LayerSlct) {
           
   this.querySearch = function(val) {
     return $http.get('http://api-adresse.data.gouv.fr/search/?autocomplete=0&limit=5&q='+val)

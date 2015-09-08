@@ -36,7 +36,7 @@ app.factory('LayerSlct', ['$location', function($location) {
                 visible: false
             }), {
                 title: 'OpenStreetMap',
-                screenshot: 'assets/images/octicon-repo.svg'
+                screenshot: 'assets/images/map.jpg'
             }
         )
     ];
