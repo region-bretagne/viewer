@@ -12,14 +12,14 @@ app.config(['$locationProvider', 'panelsProvider', function ($locationProvider, 
         .add({
             id: 'layermenu',
             position: 'right',
-            size: '20%',
+            size: '300px',
             templateUrl: 'app/template/layermenu.html',
             controller: 'layerCtrl'
         })
          .add({
             id: 'mapmenu',
-            position: 'bottom',
-            size: '200px',
+            position: 'right',
+            size: '240px',
             templateUrl: 'app/template/mapmenu.html',
             controller: 'mapMenuCtrl'
         });

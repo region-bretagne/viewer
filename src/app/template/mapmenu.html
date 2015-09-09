@@ -1,13 +1,20 @@
-<div class="pane-wrapper">   
+<div class="pane-wrapper">
+    <p>
+    	<button type="button" class="close" data-ng-click="panels.close();"><i class="icon-close"></i></button>
+    </p>
 
+    <h2 class="h4">Les fonds de cartes</h2>
+
+	<hr>
+  
     <ul class="list-unstyled map-list">
       <li ng-repeat="layer in backgroundlayers" class="map-item">           
-        <a class=" thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
-          <img src="{{layer.screenshot}}" alt="" class="map-screenshot">
+        <a class="thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
+        	
+          <img src="{{layer.screenshot}}" alt="" width="200" class="img-resposnive">
+          {{ layer.title }}
         </a>
-        <p ng-class="{'active':layer.getVisible()}">{{ layer.title }}</p>
 
       </li>
     </ul>
-
-</div><!-- /.pane-wrappe -->
+</div>
