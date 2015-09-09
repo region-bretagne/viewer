@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('km_mapMapFactory', function($location) {
+app.factory('LayerSlct', ['$location', function($location) {
 
     var _layerExtend = function(l, params) {
         return angular.extend(l, params);
@@ -36,7 +36,7 @@ app.factory('km_mapMapFactory', function($location) {
                 visible: false
             }), {
                 title: 'OpenStreetMap',
-                screenshot: 'assets/images/octicon-repo.svg'
+                screenshot: 'assets/images/map.jpg'
             }
         )
     ];
@@ -122,9 +122,4 @@ app.factory('km_mapMapFactory', function($location) {
             _mapChange(null);
         }
     };
-})
-.controller('mapCtrl', ['$scope', 'km_mapMapFactory', function ($scope, km_mapMapFactory) {
-            $scope.backgroundlayers = km_mapMapFactory.backgroundlayers;
-            $scope.changeLayer = km_mapMapFactory.changeLayer;
-        }]
-);
+}]);

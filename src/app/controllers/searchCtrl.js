@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("SearchCtrl", function($http, km_mapMapFactory) {
+app.controller("searchCtrl", ['$http', 'LayerSlct', function($http, LayerSlct) {
           
   this.querySearch = function(val) {
     return $http.get('http://api-adresse.data.gouv.fr/search/?autocomplete=0&limit=5&q='+val)
@@ -34,7 +34,7 @@ app.controller("SearchCtrl", function($http, km_mapMapFactory) {
               default:
                  zoom = 14;
            }
-          km_mapMapFactory.zoomTo(center, zoom);
+          LayerSlct.zoomTo(center, zoom);
      }
   }
-});
+}]);

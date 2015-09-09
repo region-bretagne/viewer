@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="http://guidestyles.bretagne.bzh/styles/crbicon.css">
 
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular.panels/dist/angular.panels.min.css" />
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     
@@ -25,95 +26,43 @@
     <link rel="stylesheet" href="app/app.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
   </head>
-  <body layout="column" ng-controller="AppCtrl">
+  <body ng-controller="MainCtrl">
 
+    <!-- La barre de navigation -->
+    <nav class="navbar navbar-default">
 
-      <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        
+        <header class="header">
+          <a href="#" class="navbar-brand rb">Kartenn</a>
+          <p class="navbar-text"><small>{{ name }}</small></p>
+        </header>
 
-        <div class="container-fluid" layout="row">
-          
-          <header class="header" flex>
-            <a href="#" class="navbar-brand rb">Kartenn</a>
-            <p class="navbar-text"><small>{{ name }}</small></p>
-          </header>
-
-          <div class="search" ng-controller="SearchCtrl as ctrl">
-            
-            <form ng-submit="$event.preventDefault()" class="navbar-form">     
-                <md-autocomplete
-                    md-selected-item="ctrl.selectedItem"
-                    md-search-text="ctrl.searchText"
-                    md-items="item in ctrl.querySearch(ctrl.searchText)"
-                    md-selected-item-change="ctrl.selectedItemChange(item)"
-                    md-item-text="item.properties.label"
-                    placeholder="rechercher une adresse"            
-                    >          
-                        <md-item-template>
-                              <span class="item-title">
-                                <span >
-                                  <i class="icon-search"></i>
-                                </span>
-                                   {{ item.properties.label}} 
-                              </span>
-                              <span class="item-metadata">
-                                <span class="item-metastat">
-                                  <strong>{{item.properties.context}}</strong>
-                                </span>
-                                <span class="item-metastat">
-                                  <i>{{item.properties.type}}</i>
-                                </span>
-                              </span>
-                      </md-item-template>
-                </md-autocomplete>
-            </form>
-
-          </div>
-
-          <div flex>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a ng-click="toggleSidenav('left')">calques</a>
-              </li>
-              <li>
-                <a ng-click="toggleSidenav('left')">fond de cartes</a>
-              </li>
-            </ul>
-
-          </div>
+        <div class="search" ng-include src="'app/template/searchform.html'">
 
         </div>
 
-      </nav>
+        <div class="navigation">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a ng-click="OpenLayerMenu()"><i class="icon-map-marker"></i> calques</a>
+            </li>
+            <li>
+              <a ng-click="OpenMapMenu()"><i class="icon-image"></i> fond de cartes</a>
+            </li>
+          </ul>
+        </div> <!-- /.navigation -->
 
-      <md-sidenav class="md-sidenav-right" md-component-id="left">             
-         
-            
-        <md-divider></md-divider>   
-        <md-list-item class="md-3-line" ng-repeat="item in menu">
-          <h3> {{ item.title }} </h3>
-        </md-list-item>
-        <md-divider></md-divider>
-          <md-divider></md-divider>          
-          <md-list ng-controller="mapCtrl">
-              <md-subheader class="md-no-sticky">Backgroundlayers</md-subheader>
-              <md-list-item md-ink-ripple ng-repeat="layer in backgroundlayers" ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">           
-                    <div class="inset">
-                      <md-icon md-svg-icon="{{layer.screenshot}}"></md-icon>
-                    </div>
-                    <div class="inset" ng-class="{'active':layer.getVisible()}">{{layer.title}}
-                    </div>                
-                       
-              </md-list-item>
-          </md-list>
-        
-      </md-sidenav>
+      </div> <!-- /.container-fluid -->
 
-      <div id="map">        
-      </div>
+    </nav>
+      
+    <!--  Le panneau -->
+    <div data-panels="true"></div>
+
+    <!-- La carte -->
+    <div id="map"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -128,6 +77,7 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular.panels/dist/angular.panels.min.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../bower_components/angular-aria/angular-aria.js"></script>
     <script src="../bower_components/angular-material/angular-material.js"></script>
@@ -146,11 +96,15 @@
     <!-- endinject -->
     <!-- inject:js -->
 
+    <script src="app/controllers/layerCtrl.js"></script>
+
     <script src="app/controllers/mainCtrl.js"></script>
+
+    <script src="app/controllers/mapMenuCtrl.js"></script>
 
     <script src="app/controllers/searchCtrl.js"></script>
 
-    <script src="app/services/mapSrv.js"></script>
+    <script src="app/services/LayerSrv.js"></script>
 
     <!-- endinject -->
     <!-- endbuild -->

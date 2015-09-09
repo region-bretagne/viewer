@@ -1,0 +1,13 @@
+<div class="pane-wrapper">
+    <p>
+    	<button type="button" class="close" data-ng-click="panels.close();"><i class="icon-close"></i></button>
+    </p>
+
+    <h2>titre</h2>
+
+	<hr>
+  
+    <ul class="nav nav-sidebar">
+      <li ng-repeat="item in menu"><a href="{{ item.url }}">{{ item.title }}</a></li>
+    </ul>
+</div>
