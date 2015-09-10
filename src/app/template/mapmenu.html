@@ -1,10 +1,10 @@
 <md-toolbar>
   <h1 class="md-toolbar-tools">Les fonds de cartes</h1>
 </md-toolbar>
-<md-content ng-controller="mapMenuCtrl" layout-padding>
+<md-content ng-controller="mapMenuCtrl as mapmenu" layout-padding>
   <ul class="list-unstyled map-list">
-    <li ng-repeat="layer in backgroundlayers" class="map-item">           
-      <a class="thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
+    <li ng-repeat="layer in mapmenu.backgroundlayers" class="map-item">           
+      <a class="thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="mapmenu.changeLayer(layer)">
       	
         <img src="{{layer.screenshot}}" alt="" width="200" class="img-resposnive">
         {{ layer.title }}

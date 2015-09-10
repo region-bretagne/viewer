@@ -2,9 +2,9 @@
 <md-toolbar>
   <h1 class="md-toolbar-tools">Les calques</h1>
 </md-toolbar>
-<md-content ng-controller="layerCtrl" layout-padding>
- 	<div ng-repeat="menu in menus">
- 		<md-subheader class="md-no-sticky">{{ menu.title}}</md-subheader>
+<md-content ng-controller="layerCtrl as layer" layout-padding>
+ 	<div ng-repeat="menu in layer.menus">
+ 		<md-subheader class="md-no-sticky">{{ layer.menu.title}}</md-subheader>
 		<md-list class="nav nav-sidebar">
 			<md-list-item ng-repeat="item in menu.items">
 				<p>{{ item.title }}</p>

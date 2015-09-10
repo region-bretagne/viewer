@@ -1,9 +1,9 @@
-<form ng-submit="$event.preventDefault()" ng-controller="searchCtrl as ctrl" class="navbar-form" >     
+<form ng-submit="$event.preventDefault()" ng-controller="searchCtrl as search" class="navbar-form" >     
 <md-autocomplete
-    md-selected-item="ctrl.selectedItem"
-    md-search-text="ctrl.searchText"
-    md-items="item in ctrl.querySearch(ctrl.searchText)"
-    md-selected-item-change="ctrl.selectedItemChange(item)"
+    md-selected-item="selectedItem"
+    md-search-text="searchText"
+    md-items="item in search.querySearch(searchText)"
+    md-selected-item-change="search.selectedItemChange(item)"
     md-item-text="item.properties.label"
     md-min-length="3"
     placeholder="Rechercher une adresse"            
@@ -11,14 +11,14 @@
         <md-item-template>
               <span class="item-title">
                 <md-icon md-svg-icon="assets/images/octicon-repo.svg"></md-icon>
-                <span> {{item.properties.label}} </span>
+                <span>{{ item.properties.label }} </span>
               </span>
               <span class="item-metadata">
                 <span class="item-metastat">
-                  <strong>{{item.properties.context}}</strong>
+                  <strong>{{ item.properties.context }}</strong>
                 </span>
                 <span class="item-metastat">
-                  <i>{{item.properties.type}}</i>
+                  <i>{{ item.properties.type }}</i>
                 </span>
               </span>
       </md-item-template>

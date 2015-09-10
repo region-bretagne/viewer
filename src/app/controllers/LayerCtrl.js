@@ -1,42 +1,45 @@
 'use strict';
 
+// layerCtrl.js
+function layerCtrl () {
 
-app.controller('layerCtrl', ['$scope', function($scope) {
+  this.menus = [
+    {
+      'title' : 'titre menu 1',
+      'items' : [
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        },
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        },
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        }
+      ]
+    },
+    {
+      'title' : 'titre menu 2',
+      'items' : [
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        },
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        },
+        {
+          'title' : 'titre item 1',
+          'param' : 'p1'
+        }
+      ]
+    },  
+  ];
+}
 
-	$scope.menus = [
-		{
-			"title" : "titre menu 1",
-			"items" : [
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				},
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				},
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				}
-			]
-		},
-		{
-			"title" : "titre menu 2",
-			"items" : [
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				},
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				},
-				{
-					"title" : "titre item 1",
-					"param" : "p1"
-				}
-			]
-		},	];
-
-}]);
+angular.module('app')
+	.controller('layerCtrl', layerCtrl);

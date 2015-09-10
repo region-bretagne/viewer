@@ -1,9 +1,12 @@
 'use strict';
 
+// mapMenuCtrl.js
+function mapMenuCtrl (layerSlct) {
 
-app.controller('mapMenuCtrl', ['$scope', 'LayerSlct', function($scope, LayerSlct) {
-    
-    $scope.backgroundlayers = LayerSlct.backgroundlayers;
-    $scope.changeLayer = LayerSlct.changeLayer;
+  this.backgroundlayers = layerSlct.backgroundlayers;
+  this.changeLayer = layerSlct.changeLayer;
 
-}]);
+}
+
+angular.module('app')
+	.controller('mapMenuCtrl', mapMenuCtrl);
