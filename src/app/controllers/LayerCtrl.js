@@ -1,26 +1,42 @@
 'use strict';
 
 
-app.controller('layerCtrl', ['$scope', 'LayerSlct', 'panels', function($scope, LayerSlct, panels) {
+app.controller('layerCtrl', ['$scope', function($scope) {
 
-	 //ouverture du panneau layer sur l'evt OpenLayerMenu
-    $scope.$on('OpenLayerMenu', function(event, args) {
-
-        console.log('click');
-        $scope.message = args.message;
-        panels.open("layermenu");
-
-    });
-
-	$scope.menu = [
+	$scope.menus = [
 		{
-			"title" : "titre item 2",
-			"url" : "url"
+			"title" : "titre menu 1",
+			"items" : [
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				},
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				},
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				}
+			]
 		},
 		{
-			"title" : "titre item 2",
-			"url" : "url"
-		}
-	];
+			"title" : "titre menu 2",
+			"items" : [
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				},
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				},
+				{
+					"title" : "titre item 1",
+					"param" : "p1"
+				}
+			]
+		},	];
 
 }]);

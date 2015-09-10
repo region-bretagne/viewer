@@ -1,13 +1,18 @@
-<div class="pane-wrapper">
-    <p>
-    	<button type="button" class="close" data-ng-click="panels.close();"><i class="icon-close"></i></button>
-    </p>
 
-    <h2 class="h4">Les calques</h2>
-
-	<hr>
-  
-    <ul class="nav nav-sidebar">
-      <li ng-repeat="item in menu"><a href="{{ item.url }}">{{ item.title }}</a></li>
-    </ul>
-</div>
+<md-toolbar>
+  <h1 class="md-toolbar-tools">Les calques</h1>
+</md-toolbar>
+<md-content ng-controller="layerCtrl" layout-padding>
+ 	<div ng-repeat="menu in menus">
+ 		<md-subheader class="md-no-sticky">{{ menu.title}}</md-subheader>
+		<md-list class="nav nav-sidebar">
+			<md-list-item ng-repeat="item in menu.items">
+				<p>{{ item.title }}</p>
+				<md-checkbox class="md-secondary" ng-model="item.param"></md-checkbox>
+			</md-list-item>
+		</md-list>
+ 	</div>
+	<md-button ng-click="closeSidebar()">
+		<i class="icon-close"></i> Fermer
+	</md-button>
+<md-content>

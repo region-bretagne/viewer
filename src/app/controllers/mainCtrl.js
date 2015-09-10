@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', ['$http', '$location', '$scope', 'LayerSlct', 'panels', function($http, $location, $scope, LayerSlct, panels) {
+app.controller('MainCtrl', ['$http', '$location', '$scope', 'LayerSlct', '$mdSidenav', function($http, $location, $scope, LayerSlct, $mdSidenav) {
 
     var conf = 'conf/default.json';
     var params = $location.search();
@@ -15,14 +15,14 @@ app.controller('MainCtrl', ['$http', '$location', '$scope', 'LayerSlct', 'panels
             $scope.$broadcast('config-loaded');
         })
         .error(function(data, status) {
-            // $mdDialog.show(
-            //     $mdDialog.alert()
-            //         .parent(angular.element(document.body))
-            //         .title('Erreur')
-            //         .content(status + ' : ' + data)
-            //         .ariaLabel('Alert Dialog')
-            //         .ok('Fermer')
-            // );
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.body))
+                    .title('Erreur')
+                    .content(status + ' : ' + data)
+                    .ariaLabel('Alert Dialog')
+                    .ok('Fermer')
+            );
     })
 
     //Fire when config.json is loaded
@@ -40,11 +40,19 @@ app.controller('MainCtrl', ['$http', '$location', '$scope', 'LayerSlct', 'panels
 
 
     // fonctions d'ouverture de panneaux
-    $scope.OpenLayerMenu = function () {
-       $scope.$broadcast('OpenLayerMenu', {message : $scope.message});
+    $scope.openSidebar = function (SidenavId) {
+       
+        $scope.sidebarContent = SidenavId;
+
+        $mdSidenav('sidebar').toggle()
     };
-    $scope.OpenMapMenu = function () {
-       $scope.$broadcast('OpenMapMenu', {message : $scope.message});
+
+    $scope.closeSidebar = function () {
+      $mdSidenav('sidebar').close()
+        .then(function () {
+          $log.debug("close sidebar is done");
+        });
     };
+
 
 }])
