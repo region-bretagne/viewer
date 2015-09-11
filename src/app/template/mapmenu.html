@@ -1,13 +1,18 @@
-<div class="pane-wrapper">   
+<md-toolbar>
+  <h1 class="md-toolbar-tools">Les fonds de cartes</h1>
+</md-toolbar>
+<md-content ng-controller="mapMenuCtrl" layout-padding>
+  <ul class="list-unstyled map-list">
+    <li ng-repeat="layer in backgroundlayers" class="map-item">           
+      <a class="thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
+      	
+        <img src="{{layer.screenshot}}" alt="" width="200" class="img-resposnive">
+        {{ layer.title }}
+      </a>
 
-    <ul class="list-unstyled map-list">
-      <li ng-repeat="layer in backgroundlayers" class="map-item">           
-        <a class=" thumbnail"  ng-class="{'active':layer.getVisible()}" ng-click="changeLayer(layer)">
-          <img src="{{layer.screenshot}}" alt="" class="map-screenshot">
-        </a>
-        <p ng-class="{'active':layer.getVisible()}">{{ layer.title }}</p>
-
-      </li>
-    </ul>
-
-</div><!-- /.pane-wrappe -->
+    </li>
+  </ul>
+  <md-button ng-click="closeSidebar()">
+    <i class="icon-close"></i> Fermer
+  </md-button>
+<md-content>
