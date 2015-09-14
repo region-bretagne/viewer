@@ -35,7 +35,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: 'kartennApp'
+      moduleName: 'app'
     }))
     .pipe(gulp.dest('.tmp'))
     .pipe($.size());
