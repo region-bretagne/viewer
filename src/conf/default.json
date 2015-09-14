@@ -10,7 +10,7 @@
         "backgroundlayers": [
             {
                 "title": "OpenCycleMap",
-                "screenshot": "assets/images/map.jpg",
+                "screenshot": "http://tile.opencyclemap.org/cycle/8/126/88.png",
                 "visible": true,
                 "attribution": "All maps &copy; <a href=\"http://www.opencyclemap.org/\">OpenCycleMap</a>",
                 "type": "OSM",
@@ -18,7 +18,7 @@
             },
             {
                 "title": "Mapbox Geography Class",
-                "screenshot": "assets/images/map.jpg",
+                "screenshot": "http://c.tiles.mapbox.com/v3/mapbox.geography-class/8/126/88.png",
                 "visible": false,
                 "attribution": "Mapbox",
                 "type": "OSM",
@@ -26,7 +26,7 @@
             },
             {
                 "title": "MapBox Night",
-                "screenshot": "assets/images/map.jpg",
+                "screenshot": "http://a.tiles.mapbox.com/v3/examples.map-0l53fhk2/8/126/88.png",
                 "visible": false,
                 "attribution": "<a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap</a> <a class=\"mapbox-improve-map\" href=\"https://www.mapbox.com/map-feedback/\" target=\"_blank\">Improve this map</a>",
                 "type": "OSM",

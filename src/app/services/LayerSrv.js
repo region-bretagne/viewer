@@ -39,7 +39,7 @@
                 visible: false
             }), {
                 title: 'OpenStreetMap',
-                screenshot: 'assets/images/map.jpg'
+                screenshot: 'http://a.tile.openstreetmap.org/8/126/88.png'
             }
         )
       ];
