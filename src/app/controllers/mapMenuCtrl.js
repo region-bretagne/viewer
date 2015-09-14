@@ -1,12 +1,15 @@
-'use strict';
+(function() {
+	'use strict';
 
-// mapMenuCtrl.js
-function mapMenuCtrl (layerSlct) {
+	// mapMenuCtrl.js
+	function mapMenuCtrl (layerSlct) {
 
-  this.backgroundlayers = layerSlct.backgroundlayers;
-  this.changeLayer = layerSlct.changeLayer;
+	  this.backgroundlayers = layerSlct.backgroundlayers;
+	  this.changeLayer = layerSlct.changeLayer;
 
-}
+	}
 
-angular.module('app')
-	.controller('mapMenuCtrl', mapMenuCtrl);
+	angular.module('app')
+		.controller('mapMenuCtrl', mapMenuCtrl);
+
+})();
